@@ -44,7 +44,14 @@ export class World3d implements IWorld3d {
             this.scene
         );
 
+        // BABYLON.SceneLoader.ImportMeshAsync("", "../assets/3d", "scene.babylon").then((result) => {
+        //     // result.meshes[1].position.x = 20;
+        //     console.log(result.meshes)
+        // });
+
         // create material
+
+
         const groundMaterial = new BABYLON.StandardMaterial(
             "grooundMat",
             this.scene

@@ -1,0 +1,52 @@
+.bets_container{
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    width: 750px;
+}
+
+
+
+.multiple{
+    margin-top: 120px;
+    cursor: pointer;
+}
+
+.chip30{
+    margin-top: 120px;
+    cursor: pointer;
+}
+
+.chip60{
+    margin-top: 80px;
+    cursor: pointer;
+}
+
+.chip300{
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.chip600{
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.chip1500{
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.chip6k{
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.chip30k{
+    margin-top: 80px;
+    cursor: pointer;
+}
+

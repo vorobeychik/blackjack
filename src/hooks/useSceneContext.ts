@@ -1,8 +1,8 @@
 import {useContext} from "react";
-import {sceneContext} from "../context/sceneContext";
+import {SceneContext} from "../context/sceneContext";
 
 export default () => {
-    const context = useContext(sceneContext);
+    const context = useContext(SceneContext);
 
     return context
 }
