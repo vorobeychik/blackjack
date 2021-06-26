@@ -135,6 +135,7 @@ const blackJackSlice = createSlice({
             state.bets.isVisible = false
         },
         makeBet:(state,action:PayloadAction<number>) => {
+          state.balance = state.balance - action.payload;
           state.bets.bet = action.payload;
         },
         playerWinBet:(state,action:PayloadAction<number>) => {

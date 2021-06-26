@@ -1,6 +1,4 @@
 import { configureStore} from '@reduxjs/toolkit';
-// import balanceSlice from "./balanceSlice";
-import betsSlice from "./betsSlice";
 import blackJackSlice from "./blackJackSlice";
 
 export const store = configureStore({

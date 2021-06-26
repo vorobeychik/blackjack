@@ -13,7 +13,7 @@ export function useBlackJack(scene:IWorld3d | null){
         dispatch(createNewDeck())
         dispatch(getCards({player:'dealer',amount:2}))
         dispatch(getCards({player:'player',amount:2}))
-
+        scene?.moveBox()
     }
 
 
