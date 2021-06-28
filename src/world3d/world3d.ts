@@ -1,4 +1,5 @@
 import * as BABYLON from "babylonjs";
+import 'babylonjs-loaders'
 
 export interface IWorld3d {
     changeColor(hex: string): void;
@@ -11,6 +12,7 @@ export class World3d implements IWorld3d {
     private scene: BABYLON.Scene;
     private animation?: BABYLON.AnimationGroup;
     private camera: BABYLON.ArcRotateCamera;
+    private card:any;
 
     public constructor(canvas: HTMLCanvasElement) {
         const engine = new BABYLON.Engine(canvas);
@@ -44,10 +46,21 @@ export class World3d implements IWorld3d {
             this.scene
         );
 
-        // BABYLON.SceneLoader.ImportMeshAsync("", "../assets/3d", "scene.babylon").then((result) => {
-        //     // result.meshes[1].position.x = 20;
-        //     console.log(result.meshes)
-        // });
+        BABYLON.SceneLoader.Append("./", 'deck.obj', this.scene, function (scene) {
+            // do something with the scene
+            console.log(scene.meshes)
+
+        });
+
+        BABYLON.SceneLoader.ImportMesh("",'./','deck.obj',this.scene,(grop:any) => {
+            grop.forEach((el:any,i:any) => {
+                console.log(el.name)
+                this.scene.addMesh(el)
+            })
+        })
+        console.log()
+
+
 
         // create material
 

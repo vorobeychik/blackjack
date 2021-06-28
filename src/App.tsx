@@ -6,6 +6,7 @@ import {Bets} from "./components/Bets/Bets";
 import {Balance} from "./components/Balance/Balance";
 import {useDispatch} from "react-redux";
 import {createNewDeck,getCards,countHandWeight} from  './redux/blackJackSlice'
+import {GameControls} from "./components/GameControls/GameControls";
 
 
 
@@ -27,8 +28,10 @@ function App() {
   <SceneContext.Provider value={{scene:world3d.current,ref:canvasRef}}>
       <div className="Game">
           <Scene/>
+          <GameControls />
           <Bets />
           <Balance />
+
       </div>
   </SceneContext.Provider>
   );

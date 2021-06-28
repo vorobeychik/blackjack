@@ -1,0 +1,14 @@
+.game_controls_container{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+}
+
+.game_controls_buttons{
+    display: flex;
+}
+
+.game_controls_title{
+
+}
+

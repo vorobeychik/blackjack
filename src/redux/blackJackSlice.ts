@@ -8,6 +8,7 @@ const values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"
 
 const initialState:InitialStateType = {
     deck:[],
+    isDealerTurn:false,
     dealer:{
         weight:0,
         hand:[],
@@ -20,6 +21,9 @@ const initialState:InitialStateType = {
     bets:{
         isVisible:true,
         bet:0,
+    },
+    gameControls:{
+        isVisible:false,
     }
 }
 
@@ -27,10 +31,14 @@ type InitialStateType = {
     deck:Card[],
     dealer:Player,
     player:Player,
-    balance:number
+    balance:number,
+    isDealerTurn:boolean,
     bets:{
         isVisible:boolean,
         bet:number,
+    },
+    gameControls:{
+        isVisible:boolean,
     }
 
 }
@@ -88,9 +96,9 @@ const blackJackSlice = createSlice({
 
             state.deck = deck;
             if(player === 'player'){
-                state.player.hand = hand;
+                state.player.hand = [...state.player.hand,...hand];
             }else if(player === 'dealer'){
-                state.dealer.hand = hand;
+                state.dealer.hand = [...state.dealer.hand,...hand];
             }
 
 
@@ -145,7 +153,29 @@ const blackJackSlice = createSlice({
             state.bets.bet = 0;
 
             return state
+        },
+        roundEnd:(state) => {
+          state.gameControls.isVisible = false;
+
+          state.bets.bet = 0;
+          state.bets.isVisible = true;
+
+          state.player.hand = [];
+          state.player.weight = 0;
+
+          state.dealer.hand = [];
+          state.dealer.weight = 0;
+        },
+        startDealerTurn:(state) => {
+            state.isDealerTurn = true;
+        },
+        hideGameControls:(state) => {
+            state.gameControls.isVisible = false;
+        },
+        showGameControls:(state) => {
+            state.gameControls.isVisible = true;
         }
+
 
     }
 
@@ -153,7 +183,11 @@ const blackJackSlice = createSlice({
 
 export default blackJackSlice.reducer;
 
-export const {createNewDeck,getCards,countHandWeight,addToBalance,subtractFromBalance,showBets,hideBets,makeBet,playerWinBet} = blackJackSlice.actions;
+export const {createNewDeck,getCards,countHandWeight,addToBalance,subtractFromBalance,showBets,hideBets,makeBet,playerWinBet,hideGameControls,showGameControls,roundEnd,startDealerTurn} = blackJackSlice.actions;
 
 export const selectBalance = (state:RootState) => state.blackJack.balance;
 export const selectBetsVisibility = (state:RootState) => state.blackJack.bets.isVisible;
+export const selectPlayerHandWeight = (state:RootState) => state.blackJack.player.weight;
+export const selectIsDealerTurn = (state:RootState) => state.blackJack.isDealerTurn;
+export const selectDealerHandWeight = (state:RootState) => state.blackJack.dealer.weight;
+export const selectGameControlsVisibility = (state:RootState) => state.blackJack.gameControls.isVisible;
