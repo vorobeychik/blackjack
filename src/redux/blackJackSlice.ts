@@ -157,6 +157,8 @@ const blackJackSlice = createSlice({
         roundEnd:(state) => {
           state.gameControls.isVisible = false;
 
+          state.isDealerTurn = false;
+
           state.bets.bet = 0;
           state.bets.isVisible = true;
 

@@ -15,10 +15,6 @@ import {useEffect, useState} from "react";
 
 export function useBlackJack(scene:IWorld3d | null){
     const dispatch = useDispatch()
-    const handWeight = useSelector(selectPlayerHandWeight)
-    console.log(scene)
-
-
 
     function startNewRound(){
 
@@ -36,7 +32,6 @@ export function useBlackJack(scene:IWorld3d | null){
     function playerTakeCard(){
         dispatch(getCards({player:'player',amount:1}))
         dispatch(countHandWeight('player'))
-        console.log(handWeight)
     }
 
     function dealerTakeCard(){
@@ -44,35 +39,43 @@ export function useBlackJack(scene:IWorld3d | null){
         dispatch(countHandWeight('dealer'))
     }
 
-    function checkDealerHand(handWeight:number){
-        if(handWeight <= 16){
-            dealerTakeCard()
-        }else{
-            console.log('Рука диллераБольше 16',handWeight)
-        }
-    }
+    // function checkDealerHand(handWeight:number){
+    //
+    // }
 
     function dealerTurn(){
         dispatch(startDealerTurn())
     }
 
-    function checkPlayerHand(handWeight:number){
-        if(handWeight > 21){
-            dispatch(roundEnd())
+    function checkHands(playerHandWeight:number,dealerHandWeight:number,isDealerTurn:boolean){
+        if(isDealerTurn){
+            if(dealerHandWeight <= 16){
+                console.log('Рука диллера',dealerHandWeight)
+                dealerTakeCard()
+
+            }else{
+                roundResult(playerHandWeight,dealerHandWeight)
+            }
+        }else{
+            if(playerHandWeight > 21){
+                console.log('У игрока больше 21')
+                dispatch(roundEnd())
+
+            }
+            console.log('Вес',playerHandWeight)
         }
-       console.log('вес',handWeight)
     }
 
     function roundResult(playerHandWeight:number,dealerHandWeight:number){
         if (playerHandWeight === dealerHandWeight){
+            console.log('Равные очки')
             dispatch(playerWinBet(1))
-            console.log('Диллер победил')
         }if(playerHandWeight > dealerHandWeight){
-            dispatch(playerWinBet(1.5))
             console.log('Игрок победил')
+            dispatch(playerWinBet(1.5))
         }
 
-        roundEnd()
+        dispatch(roundEnd())
 
     }
 
@@ -80,5 +83,5 @@ export function useBlackJack(scene:IWorld3d | null){
 
 
 
-    return {startNewRound,playerTakeCard,checkPlayerHand,checkDealerHand,dealerTurn}
+    return {startNewRound,playerTakeCard,checkHands,dealerTurn,roundResult}
 }

@@ -14,7 +14,7 @@ import useSceneContext from "../../hooks/useSceneContext";
 export function GameControls(){
     const isVisible = useSelector(selectGameControlsVisibility)
     const sceneContext = useSceneContext()!;
-    const {playerTakeCard,checkPlayerHand,checkDealerHand,dealerTurn} = useBlackJack(sceneContext.scene);
+    const {playerTakeCard,checkHands,dealerTurn} = useBlackJack(sceneContext.scene);
 
     const playerHandWeight = useSelector(selectPlayerHandWeight);
     const dealerHandWeight = useSelector(selectDealerHandWeight)
@@ -24,17 +24,11 @@ export function GameControls(){
     const stopHandler = useCallback(dealerTurn,[])
 
 
-    useEffect(() => {
-        checkPlayerHand(playerHandWeight)
-    },[playerHandWeight])
+
 
     useEffect(() => {
-
-        if(isDealerTurn){
-            checkDealerHand(dealerHandWeight)
-            console.log('дИЛЛЕР СДЕЛАЛ ХОД')
-        }
-    },[dealerHandWeight,isDealerTurn])
+        checkHands(playerHandWeight,dealerHandWeight,isDealerTurn)
+    },[dealerHandWeight,playerHandWeight,isDealerTurn])
 
 
     if(!isVisible){
