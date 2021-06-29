@@ -39,10 +39,6 @@ export function useBlackJack(scene:IWorld3d | null){
         dispatch(countHandWeight('dealer'))
     }
 
-    // function checkDealerHand(handWeight:number){
-    //
-    // }
-
     function dealerTurn(){
         dispatch(startDealerTurn())
     }

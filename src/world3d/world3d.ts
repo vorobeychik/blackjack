@@ -15,7 +15,7 @@ export class World3d implements IWorld3d {
     private card:any;
 
     public constructor(canvas: HTMLCanvasElement) {
-        const engine = new BABYLON.Engine(canvas);
+        const engine = new BABYLON.Engine(canvas, true, { preserveDrawingBuffer: true, stencil: true,  disableWebGL2Support: false});
 
         // create scene
         this.scene = new BABYLON.Scene(engine);
@@ -28,6 +28,8 @@ export class World3d implements IWorld3d {
             new BABYLON.Vector3(0, 6, 8),
             this.scene
         );
+
+        this.scene.debugLayer.show();
         this.camera.attachControl(canvas, true);
         // // create light
         const light = new BABYLON.HemisphericLight(
@@ -37,42 +39,19 @@ export class World3d implements IWorld3d {
         );
         light.intensity = 0.8;
         // // create ground
-        const ground = BABYLON.GroundBuilder.CreateGround(
-            "ground",
-            {
-                width: 5,
-                height: 5
-            },
-            this.scene
-        );
-
-        BABYLON.SceneLoader.Append("./", 'deck.obj', this.scene, function (scene) {
-            // do something with the scene
-            console.log(scene.meshes)
-
+        console.log('Сцена',this.scene)
+        BABYLON.SceneLoader.Append("", "chips.obj", this.scene, function (...args) {
+            console.log(args)
         });
 
-        BABYLON.SceneLoader.ImportMesh("",'./','deck.obj',this.scene,(grop:any) => {
-            grop.forEach((el:any,i:any) => {
-                console.log(el.name)
-                this.scene.addMesh(el)
-            })
-        })
-        console.log()
+        BABYLON.SceneLoader.Append("", "deck.obj", this.scene, function (...args) {
+            console.log(args)
+        });
 
 
+        const box = BABYLON.MeshBuilder.CreateBox("box", {}, this.scene);
 
-        // create material
 
-
-        const groundMaterial = new BABYLON.StandardMaterial(
-            "grooundMat",
-            this.scene
-        );
-
-        groundMaterial.diffuseColor = BABYLON.Color3.FromHexString("#cccccc");
-        // get texture for ground
-        ground.material = groundMaterial;
 
         this.box = this.createBox();
         this.material = this.createMaterial("#ff0000");
