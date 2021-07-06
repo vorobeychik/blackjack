@@ -11,10 +11,13 @@ import {
     playerWinBet
 } from "../redux/blackJackSlice";
 import {IWorld3d} from "../world3d/world3d";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import useSceneContext from "./useSceneContext";
 
 export function useBlackJack(scene:IWorld3d | null){
     const dispatch = useDispatch()
+    const context = useSceneContext()
+    
 
     function startNewRound(){
 
@@ -26,7 +29,7 @@ export function useBlackJack(scene:IWorld3d | null){
         dispatch(countHandWeight('dealer'))
         dispatch(showGameControls())
         console.log(scene)
-        scene?.moveBox()
+
     }
 
     function playerTakeCard(){
