@@ -17,6 +17,13 @@ module.exports = {
                 loader: 'file-loader',
                 include: paths.obj
             },
+            {
+                test: /\.waw$/,
+                loader: 'file-loader',
+                query: {
+                    name: 'static/media/[name].[hash:8].[ext]'
+                }
+            }
         ]
     },
     plugins: [

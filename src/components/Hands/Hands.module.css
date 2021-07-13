@@ -1,0 +1,50 @@
+.hands{
+    position: absolute;
+    top:15%;
+    left:25%;
+    width:75%
+}
+
+.playerHand{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    position: relative;
+    margin-top: 2vw;
+
+}
+
+.dealerHand{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    position: relative;
+}
+
+
+@media (max-width: 400px) {
+
+    .hands{
+        position: absolute;
+        top:40%;
+        left:5%;
+        width:75%
+    }
+    .playerHand{
+        width: 80%;
+        height: 40%;
+        display: flex;
+
+    }
+    .dealerHand{
+        width: 80%;
+        height: 40%;
+        display: flex;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 769px){
+    .hands{
+        top:25%;
+    }
+}

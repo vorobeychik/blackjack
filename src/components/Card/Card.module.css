@@ -1,0 +1,22 @@
+.card{
+ max-width: 160px;
+}
+
+/*.cardContainer{*/
+/*    max-width: 200px;*/
+/*    width: 20%;*/
+/*    height: 100%;*/
+/*}*/
+
+@keyframes apear {
+    0%{
+        position: absolute;
+        top: 50%;
+        left: 5%;
+    }
+    100%{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+    }
+}

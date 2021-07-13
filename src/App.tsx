@@ -1,39 +1,25 @@
 import React, {useState} from 'react';
-import {Scene} from "./components/Scene/Scene";
-import {SceneContext} from "./context/sceneContext";
-import {IWorld3d, World3d} from "./world3d/world3d";
-import {Bets} from "./components/Bets/Bets";
-import {Balance} from "./components/Balance/Balance";
-import {useDispatch} from "react-redux";
-import {createNewDeck,getCards,countHandWeight} from  './redux/blackJackSlice'
-import {GameControls} from "./components/GameControls/GameControls";
-
-
+import {Bets} from './components/Bets/Bets';
+import {Balance} from './components/Balance/Balance';
+import {GameControls} from './components/GameControls/GameControls';
+import {Table} from './components/Table/Table';
+import {Settings} from './components/Settings/Settings';
+import {Hands} from './components/Hands/Hands';
+import {Deck} from './components/Deck/Deck';
 
 function App() {
-  const dispatch = useDispatch();
-  const [isContextSetted,setContext] = useState(false)
-  const canvasRef = React.useRef<HTMLCanvasElement | null>(null);
-  const world3d = React.useRef<IWorld3d | null>(null);
 
-    React.useLayoutEffect(() => {
-        if (canvasRef.current) {
-            world3d.current = new World3d(canvasRef.current);
-            setContext(true)
-
-        }
-    }, []);
 
   return (
-  <SceneContext.Provider value={{scene:world3d.current,ref:canvasRef}}>
       <div className="Game">
-          <Scene/>
-          <GameControls />
-          <Bets />
-          <Balance />
-
+        <Hands />
+        <GameControls />
+        <Bets />
+        <Balance />
+        <Settings />
+        <Table />
+        <Deck />
       </div>
-  </SceneContext.Provider>
   );
 }
 

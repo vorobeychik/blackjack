@@ -1,52 +1,66 @@
 .bets_container{
     position: absolute;
-    top: 50%;
-    left: 20%;
+    top: 40%;
+    left: 27.5%;
     display: flex;
     justify-content: space-between;
-    height: 200px;
-    width: 750px;
+    height: 30%;
+    width: 45%;
 }
 
 
 
-.multiple{
-    margin-top: 120px;
-    cursor: pointer;
-}
 
-.chip30{
-    margin-top: 120px;
-    cursor: pointer;
-}
 
 .chip60{
-    margin-top: 80px;
+    margin-top: 20%;
     cursor: pointer;
+    max-width: 120px;
 }
 
 .chip300{
-    margin-top: 40px;
+    margin-top: 13%;
     cursor: pointer;
+    max-width: 120px;
 }
 
 .chip600{
-    margin-top: 20px;
+    margin-top: 7%;
     cursor: pointer;
+    max-width: 120px;
 }
 
 .chip1500{
-    margin-top: 20px;
+    margin-top: 7%;
     cursor: pointer;
+    max-width: 120px;
 }
 
-.chip6k{
-    margin-top: 40px;
+.chip6000{
+    margin-top: 13%;
     cursor: pointer;
+    max-width: 120px;
 }
 
-.chip30k{
-    margin-top: 80px;
+.chip30000{
+    margin-top: 20%;
     cursor: pointer;
+    max-width: 120px;
 }
 
+
+@media (max-width: 400px) {
+    .bets_container{
+        width: 80%;
+        left: 10%;
+        top: 40%;
+    }
+}
+
+@media(min-width: 400px) and (max-width: 769px){
+    .bets_container{
+        width: 60%;
+        left: 20%;
+        top: 40%;
+    }
+}
