@@ -19,4 +19,3 @@ export const languages = {
 };
 
 export type Languages = typeof languages;
-export type LanguagesKeys = keyof typeof languages['En'];

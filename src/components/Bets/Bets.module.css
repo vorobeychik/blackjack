@@ -6,47 +6,85 @@
     justify-content: space-between;
     height: 30%;
     width: 45%;
+    animation: betsAppear ease-out 2s ;
 }
 
 
 
+@keyframes betsAppear {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
 
 
 .chip60{
     margin-top: 20%;
     cursor: pointer;
     max-width: 120px;
+    outline: none;
+    border: 0;
+    background: transparent;
 }
 
 .chip300{
     margin-top: 13%;
     cursor: pointer;
     max-width: 120px;
+    cursor: pointer;
+    max-width: 120px;
+    outline: none;
+    border: 0;
+    background: transparent;
 }
 
 .chip600{
     margin-top: 7%;
     cursor: pointer;
     max-width: 120px;
+    cursor: pointer;
+    max-width: 120px;
+    outline: none;
+    border: 0;
+    background: transparent;
 }
 
 .chip1500{
     margin-top: 7%;
     cursor: pointer;
     max-width: 120px;
+    cursor: pointer;
+    max-width: 120px;
+    outline: none;
+    border: 0;
+    background: transparent;
 }
 
 .chip6000{
     margin-top: 13%;
     cursor: pointer;
     max-width: 120px;
+    cursor: pointer;
+    max-width: 120px;
+    outline: none;
+    border: 0;
+    background: transparent;
 }
 
 .chip30000{
     margin-top: 20%;
     cursor: pointer;
     max-width: 120px;
+    cursor: pointer;
+    max-width: 120px;
+    outline: none;
+    border: 0;
+    background: transparent;
 }
+
 
 
 @media (max-width: 400px) {

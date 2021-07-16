@@ -1,4 +1,4 @@
-import { configureStore} from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import blackJackSlice from './blackJackSlice';
 import languageSlice from './languageSlice';
 

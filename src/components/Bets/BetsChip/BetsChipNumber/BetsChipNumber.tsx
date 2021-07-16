@@ -1,6 +1,4 @@
 import React from 'react';
-import {ReactComponent as Number60} from '../../../../assets/svg/Number60.svg';
-import Number300 from '../../../../assets/svg/Number300.svg';
 import {BetsValues} from '../../../../types/types';
 
 type BetsChipNumberProps = {

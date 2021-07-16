@@ -1,6 +1,10 @@
 .card{
- max-width: 160px;
+  max-width: 140px;
+  z-index: 3;
+
 }
+
+
 
 /*.cardContainer{*/
 /*    max-width: 200px;*/
@@ -8,15 +12,36 @@
 /*    height: 100%;*/
 /*}*/
 
-@keyframes apear {
+.animatePlayerCard{
+    animation: appearPlayer 1s ease-in-out;
+}
+.animateDealerCard{
+    animation: appearDealer 1s ease-in-out;
+}
+
+@keyframes appearPlayer {
     0%{
-        position: absolute;
-        top: 50%;
-        left: 5%;
+        transform: translate(-500%,-45%);
+        opacity: 0;
+    }
+    70%{
+        opacity: 1;
     }
     100%{
-        position: absolute;
-        left: 50%;
-        top: 50%;
+      transform: translate(0,0);
+
     }
 }
+
+@keyframes appearDealer {
+    0%{
+        transform: translate(-500%,45%);
+
+
+    }
+    100%{
+        transform: translate(0,0);
+
+    }
+}
+

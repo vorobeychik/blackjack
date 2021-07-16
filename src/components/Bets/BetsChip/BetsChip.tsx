@@ -1,6 +1,5 @@
 import React from 'react';
 import {BetsChipNumber} from './BetsChipNumber/BetsChipNumber';
-import {getPathFromNumber} from '../../../utils/utils';
 import {BetsValues} from '../../../types/types';
 
 type BetsChipProps = {
@@ -14,8 +13,6 @@ type BetsChipProps = {
 export function BetsChip({
   mainColor, secondaryColor, number, numberColor,
 }:BetsChipProps) {
-  const {path, boldPath} = getPathFromNumber(number);
-
   return (
     <svg width="100%" viewBox="0 0 82 83" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="40" cy="42" r="40" fill="white" />

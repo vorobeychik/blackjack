@@ -7,9 +7,44 @@
 
 .game_controls_buttons{
     display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
 }
 
 .game_controls_title{
+ text-align: center;
+ font-weight: bold;
+ font-size: 24px;
+  color: white;
+}
+
+.hitButton{
+    padding: 20px 40px;
+    font-size: 20px;
+    background-color: #58c996;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
 
 }
 
+.hitButton:hover{
+    filter: brightness(1.1);
+}
+
+.standButton:hover{
+    filter: brightness(1.1);
+}
+
+.standButton{
+    padding: 20px 30px;
+    font-size: 20px;
+    background-color: firebrick;
+    border: none;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+}

@@ -1,79 +1,89 @@
-import {useDispatch, useSelector} from 'react-redux';
-import {useContext, useEffect, useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {
-  createNewDeck,
-  getCards,
-  hideBets,
+  changePhase,
   countHandWeight,
-  showGameControls,
-  selectPlayerHandWeight,
-  roundEnd,
-  startDealerTurn,
+  getCards,
+  hideGameControls,
+  makeBet,
+  Persons,
+  Phase,
   playerWinBet,
+  setDealerExtraWeightToWeight,
+  setPlayerExtraWeightToWeight,
+  showGameControls,
+  showMessage,
+  turnCard,
 } from '../redux/blackJackSlice';
+import {
+  aim, dealerAim, drawCoefficient, winCoefficient,
+} from '../constants/constants';
 
 export function useBlackJack() {
   const dispatch = useDispatch();
 
+  function roundResult(playerHandWeight:number, dealerHandWeight:number) {
+    if (dealerHandWeight > aim) {
+      dispatch(playerWinBet(winCoefficient));
+    } else if (playerHandWeight === dealerHandWeight) {
+      dispatch(playerWinBet(drawCoefficient));
+    } else if (playerHandWeight > dealerHandWeight) {
+      dispatch(playerWinBet(winCoefficient));
+    }
 
-  function startNewRound() {
-    dispatch(hideBets());
-    dispatch(createNewDeck());
-    dispatch(getCards({player: 'dealer', amount: 2}));
-    dispatch(getCards({player: 'player', amount: 2}));
-    dispatch(countHandWeight('player'));
-    dispatch(countHandWeight('dealer'));
-    dispatch(showGameControls());
+    setTimeout(() => dispatch(changePhase(Phase.RoundResultPhase)), 5000);
+  }
+
+  function startNewRound(bet:number, balance:number) {
+    if (balance < bet) {
+      dispatch(showMessage('Недостаточно баланса'));
+    } else {
+      dispatch(makeBet(bet));
+      dispatch(changePhase(Phase.PlayerPhase));
+      dispatch(getCards({player: Persons.Dealer, amount: 2}));
+      dispatch(getCards({player: Persons.Player, amount: 2}));
+      dispatch(countHandWeight(Persons.Player));
+      dispatch(countHandWeight(Persons.Dealer));
+      dispatch(showGameControls());
+    }
   }
 
   function playerTakeCard() {
-    dispatch(getCards({player: 'player', amount: 1}));
-    dispatch(countHandWeight('player'));
+    dispatch(getCards({player: Persons.Player, amount: 1}));
+    dispatch(countHandWeight(Persons.Player));
   }
 
   function dealerTakeCard() {
-    dispatch(getCards({player: 'dealer', amount: 1}));
-    dispatch(countHandWeight('dealer'));
+    dispatch(getCards({player: Persons.Dealer, amount: 1}));
+    dispatch(countHandWeight(Persons.Dealer));
   }
 
   function dealerTurn() {
-    dispatch(startDealerTurn());
+    dispatch(changePhase(Phase.DealerPhase));
+    dispatch(turnCard(false));
   }
 
-  function checkHands(playerHandWeight:number, dealerHandWeight:number, isDealerTurn:boolean) {
-    if (isDealerTurn) {
-      if (dealerHandWeight <= 16) {
-        console.log('Рука диллера', dealerHandWeight);
-        dealerTakeCard();
+  function checkDealerHands(playerHandWeight:number, dealerHandWeight:number, phase:Phase, dealerHandExtraWeight:number) {
+    if (phase === Phase.DealerPhase) {
+      if (dealerHandWeight > aim && dealerHandExtraWeight) {
+        dispatch(setDealerExtraWeightToWeight());
+      } else if (dealerHandWeight <= dealerAim && dealerHandWeight <= playerHandWeight) {
+        setTimeout(dealerTakeCard, 2000);
       } else {
-        console.log('Рука диллера');
         roundResult(playerHandWeight, dealerHandWeight);
       }
-    } else {
-      if (playerHandWeight > 21) {
-        console.log('У игрока больше 21');
-        dispatch(roundEnd());
-      }
-      console.log('Вес', playerHandWeight);
     }
   }
 
-  function roundResult(playerHandWeight:number, dealerHandWeight:number) {
-    if (dealerHandWeight > 21) {
-      dispatch(playerWinBet(1.5));
-    } else if (playerHandWeight === dealerHandWeight) {
-      console.log('Равные очки');
-      dispatch(playerWinBet(1));
-    } if (playerHandWeight > dealerHandWeight) {
-      console.log('Игрок победил');
-      dispatch(playerWinBet(1.5));
+  function checkPlayerHand(playerHandWeight:number, playerHandExtraWeight:number) {
+    if (playerHandWeight > aim && playerHandExtraWeight) {
+      dispatch(setPlayerExtraWeightToWeight());
+    } else if (playerHandWeight > aim) {
+      dispatch(hideGameControls());
+      setTimeout(() => dispatch(changePhase(Phase.RoundResultPhase)), 3000);
     }
-
-    console.log('Диллер: ', dealerHandWeight, 'Игрок: ', playerHandWeight);
-    dispatch(roundEnd());
   }
 
   return {
-    startNewRound, playerTakeCard, checkHands, dealerTurn, roundResult,
+    startNewRound, playerTakeCard, checkDealerHands, dealerTurn, roundResult, checkPlayerHand,
   };
 }
