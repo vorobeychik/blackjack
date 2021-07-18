@@ -1,6 +1,6 @@
 .game_controls_container{
     position: absolute;
-    top: 80%;
+    bottom: 5%;
     left: 40%;
     width: 20%;
 }
@@ -19,14 +19,16 @@
 }
 
 .hitButton{
-    padding: 20px 40px;
+
     font-size: 20px;
-    background-color: #58c996;
+    background-color: #3b8765;
     border: none;
     color: white;
     border-radius: 10px;
     font-weight: bold;
     cursor: pointer;
+    width: 35%;
+    height: 50px;
 
 }
 
@@ -39,12 +41,84 @@
 }
 
 .standButton{
-    padding: 20px 30px;
     font-size: 20px;
-    background-color: firebrick;
+    background-color: #7e1818;
     border: none;
     font-weight: bold;
     border-radius: 10px;
     cursor: pointer;
     color: white;
+    width: 35%;
+    height: 50px;
+}
+
+
+
+@media(min-width: 521px) and (max-width: 769px) {
+    .game_controls_title{
+        font-size: 18px;
+    }
+
+    .standButton{
+        width: 40%;
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .hitButton{
+        width: 40%;
+        font-size: 14px;
+        height: 40px;
+    }
+    .game_controls_container{
+        width: 25%;
+        left: 35%;
+    }
+}
+
+@media (min-width: 400px ) and (max-width: 520px){
+    .game_controls_container{
+        width: 35%;
+        left: 32.5%;
+        bottom: 13%;
+    }
+    .game_controls_title{
+        font-size: 16px;
+    }
+
+    .standButton{
+        width: 40%;
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .hitButton{
+        width: 40%;
+        font-size: 14px;
+        height: 40px;
+    }
+}
+
+
+@media (max-width: 400px) {
+    .game_controls_container{
+        width: 50%;
+        left: 25%;
+        bottom: 13%;
+    }
+    .game_controls_title{
+        font-size: 16px;
+    }
+
+    .standButton{
+        width: 40%;
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .hitButton{
+        width: 40%;
+        font-size: 14px;
+        height: 40px;
+    }
 }

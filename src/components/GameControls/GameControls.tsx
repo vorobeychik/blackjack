@@ -45,8 +45,8 @@ export function GameControls() {
     <div className={styles.game_controls_container}>
       <p className={styles.game_controls_title}>{translation.gameControls.gameControlsTitle}</p>
       <div className={styles.game_controls_buttons}>
-        <button type="button" className={styles.hitButton} onClick={moreHandler}>HIT</button>
-        <button type="button" className={styles.standButton} onClick={stopHandler}>STAND</button>
+        <button type="button" className={styles.hitButton} onClick={moreHandler}>{translation.gameControls.hitBtn}</button>
+        <button type="button" className={styles.standButton} onClick={stopHandler}>{translation.gameControls.stopBtn}</button>
       </div>
     </div>
   );

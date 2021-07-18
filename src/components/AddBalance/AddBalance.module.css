@@ -1,11 +1,11 @@
 .addBalance{
-    width: 60%;
-    height: 70%;
+    width: 45%;
+    height: 60%;
     position: absolute;
     background-color: #216B75;
     border-radius: 10px;
-    left: 20%;
-    top: 10%;
+    left: 27.5%;
+    top: 20%;
     border: 10px solid #95537D;
 
 }
@@ -23,14 +23,14 @@
 .offer{
     width: 33.3%;
     height: 100%;
-    max-width: 160px;
+    max-width: 210px;
     cursor: pointer;
 }
 
 .addBalanceTitle{
     text-align: center;
     font-size: 24px;
-    margin-top: 10px;
+    margin-top: 30px;
 
     font-weight: bold;
     color: white;
@@ -38,16 +38,52 @@
 
 .paragraph{
     text-align: center;
-    margin-top: 5px;
+    margin-top: 20px;
+    font-size: 20px;
     color: white;
 
 }
 
 .button{
-    margin-top: 30px;
+    margin-top: 10%;
     padding: 10px 25px;
     border-radius: 5px;
     border: none;
     font-size: 16px;
     font-weight: bold;
+}
+
+.button:hover{
+    cursor: pointer;
+    filter: brightness(1.2);
+}
+
+@media (max-width: 768px) {
+
+    .addBalance{
+        width: 60%;
+        left: 20%;
+    }
+    .paragraph{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .addBalance{
+        width: 70%;
+        left: 15%;
+    }
+    .paragraph{
+        font-size: 14px;
+    }
+}
+@media(min-width: 1440px)  {
+  .offerContainer{
+      margin-top: 80px;
+  }
+
+  .offer{
+      max-width: 230px;
+  }
 }

@@ -41,7 +41,6 @@ const initialState:StateType = {
   },
   balance: getBalance(),
   message: {
-    messageText: '',
     isVisible: false,
   },
   bet: 0,
@@ -71,7 +70,6 @@ type StateType = {
     playerWillLose:number,
   },
   message:{
-    messageText:string,
     isVisible:boolean,
   },
   bet:number,
@@ -240,13 +238,11 @@ const blackJackSlice = createSlice({
     turnCard: (state, action:PayloadAction<boolean>) => {
       state.isCardTurned = action.payload;
     },
-    showMessage: (state, action:PayloadAction<string>) => {
+    showMessage: (state) => {
       state.message.isVisible = true;
-      state.message.messageText = action.payload;
     },
     hideMessage: (state) => {
       state.message.isVisible = false;
-      state.message.messageText = '';
     },
     hideAddBalance: (state) => {
       state.addBalance.isVisible = false;

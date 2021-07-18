@@ -1,6 +1,7 @@
 .language{
     background-color: black;
     border-radius: 50%;
+    font-size: 18px;
     border:none;
     color: white;
     padding: 5px;
@@ -10,4 +11,10 @@
 
 .language:hover{
     filter: brightness(1.2);
+}
+
+@media (max-width: 400px) {
+ .language{
+     font-size: 14px;
+ }
 }

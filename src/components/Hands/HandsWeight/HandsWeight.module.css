@@ -2,26 +2,44 @@
     position: absolute;
     display: flex;
     justify-content: space-around;
-    bottom: -5%;
+    bottom: -3%;
+    padding: 0 6px;
     left: 0%;
-    padding: 0.5rem 1rem;
+    width: 50px;
+    height: 40px;
     border-radius: 20px;
     font-size: 18px;
     background-color: black;
     color: white;
     text-align: center;
     z-index: 10;
+    align-items: center;
+
 }
 
 
+@media (min-width: 770px) and (max-width: 1025px) {
+    .weight{
+        width: 40px;
+        height: 30px;
+        font-size: 16px;
+    }
+}
+
 @media  (min-width: 400px) and (max-width: 769px){
     .weight{
-        font-size: 16px;
+        width: 35px;
+        height: 25px;
+        font-size: 14px;
+        bottom: -7%;
     }
 }
 
 @media (max-width: 400px) {
     .weight{
         font-size: 8px;
+        width: 20px;
+        height: 20px;
+        bottom: -5%;
     }
 }

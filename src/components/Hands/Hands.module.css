@@ -1,6 +1,6 @@
 .hands{
     position: absolute;
-    top:15%;
+    top:13%;
     width:100%;
     height: 20%;
 }
@@ -9,7 +9,7 @@
     width: 100%;
     display: flex;
     position: relative;
-    margin-top: 2vw;
+    margin-top: 25px;
     flex-wrap: wrap;
 
 }
@@ -22,12 +22,14 @@
 .container{
     position: relative;
     display: flex;
+    width: 100%;
 }
 
 .dealerHand{
     width: 100%;
     display: flex;
     position: relative;
+    flex-wrap: wrap;
 }
 
 
@@ -35,19 +37,17 @@
 
     .hands{
         position: absolute;
-        top:40%;
-        left:5%;
-        width:75%
+        top:30%;
+        width:100%
     }
     .playerHand{
-        width: 80%;
-        height: 40%;
+
+
         display: flex;
 
     }
     .dealerHand{
-        width: 80%;
-        height: 40%;
+
         display: flex;
     }
 }
@@ -55,5 +55,6 @@
 @media (min-width: 400px) and (max-width: 769px){
     .hands{
         top:25%;
+        width: 100%;
     }
 }

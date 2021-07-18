@@ -1,0 +1,9 @@
+.tableText{
+
+}
+
+@media (max-width: 500px) {
+    .tableText{
+        transform: translate(0,200px);
+    }
+}

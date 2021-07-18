@@ -18,9 +18,14 @@ export function HandsWeight({weight, extraWeight, isCardTurned}:HandsWeightProps
     <div className={styles.weight}>
       <p>{localWeight}</p>
       {!!extraWeight && !isCardTurned && (
-      <p>
-        {extraWeight}
-      </p>
+      <>
+        <p>
+          {' / '}
+        </p>
+        <p>
+          {extraWeight}
+        </p>
+      </>
       )}
     </div>
   );

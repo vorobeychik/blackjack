@@ -8,7 +8,7 @@ export enum Languages {
 
 const languageSlice = createSlice({
   name: 'languageSlice',
-  initialState: Languages.Ru,
+  initialState: Languages.EN,
   reducers: {
     changeLanguage: (state, action:PayloadAction<Languages>) => {
       state = action.payload;

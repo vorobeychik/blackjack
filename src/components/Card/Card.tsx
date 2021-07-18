@@ -24,7 +24,7 @@ export function Card({
 
   if (isTurnedOff) {
     return (
-      <svg width="25%" viewBox="0 0 83 108" fill="none" xmlns="http://www.w3.org/2000/svg" className={classes}>
+      <svg viewBox="0 0 83 108" fill="none" xmlns="http://www.w3.org/2000/svg" className={classes}>
         <g filter="url(#filter0_d)">
           <path d="M4 5C4 2.23858 6.23858 0 9 0H74C76.7614 0 79 2.23858 79 5V95C79 97.7614 76.7614 100 74 100H9C6.23858 100 4 97.7614 4 95V5Z" fill="white" />
           <path d="M9 0.75H74C76.3472 0.75 78.25 2.65279 78.25 5V95C78.25 97.3472 76.3472 99.25 74 99.25H9C6.65279 99.25 4.75 97.3472 4.75 95V5C4.75 2.65279 6.65279 0.75 9 0.75Z" stroke="#B22222" strokeWidth="1.5" />
@@ -48,7 +48,6 @@ export function Card({
   }
 
   return (
-  // <div className={styles.cardContainer}>
     <svg width="25%" viewBox="0 0 83 108" fill="none" xmlns="http://www.w3.org/2000/svg" className={classes}>
       <g filter="url(#filter0_d)">
         <path d="M4 5C4 2.23858 6.23858 0 9 0H74C76.7614 0 79 2.23858 79 5V95C79 97.7614 76.7614 100 74 100H9C6.23858 100 4 97.7614 4 95V5Z" fill="white" />
@@ -68,6 +67,5 @@ export function Card({
       <CardValue value={value} suit={suit} />
       <CardSuit suit={suit} />
     </svg>
-  // </div>
   );
 }

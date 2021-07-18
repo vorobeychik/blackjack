@@ -1,16 +1,9 @@
 .card{
-  max-width: 140px;
+  max-width: 190px;
   z-index: 3;
+  width: 25%;
 
 }
-
-
-
-/*.cardContainer{*/
-/*    max-width: 200px;*/
-/*    width: 20%;*/
-/*    height: 100%;*/
-/*}*/
 
 .animatePlayerCard{
     animation: appearPlayer 1s ease-in-out;
@@ -42,6 +35,27 @@
     100%{
         transform: translate(0,0);
 
+    }
+}
+
+@media (max-width:1200px) {
+    .card{
+        width: 15%;
+    }
+}
+
+
+@media (min-width: 400px) and (max-width: 769px){
+    .card{
+        width: 17%;
+    }
+
+
+}
+
+@media (max-width: 400px) {
+    .card{
+        width: 20%;
     }
 }
 

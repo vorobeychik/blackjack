@@ -35,7 +35,7 @@ export function useBlackJack() {
 
   function startNewRound(bet:number, balance:number) {
     if (balance < bet) {
-      dispatch(showMessage('Недостаточно баланса'));
+      dispatch(showMessage());
     } else {
       dispatch(makeBet(bet));
       dispatch(changePhase(Phase.PlayerPhase));

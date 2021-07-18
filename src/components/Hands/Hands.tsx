@@ -28,7 +28,7 @@ export function Hands() {
 
   const playerHandElements = useMemo(() => playerHand.map((card, i, arr) => <Card value={card.value} suit={card.suit} key={uniqid()} cardOwner={Persons.Player} shouldAnimate={(arr.length === 2 || arr.length - 1 === i) && phase === Phase.PlayerPhase} isTurnedOff={false} />), [playerHand]);
 
-  const dealerHandElements = useMemo(() => dealerHand.map((card, i, arr) => <Card value={card.value} suit={card.suit} key={uniqid()} cardOwner={Persons.Dealer} shouldAnimate={(arr.length === 2 && phase === Phase.PlayerPhase) || (arr.length - 1 === i && i !== 0)} isTurnedOff={i === 0 && isCardTurned} />), [dealerHand, isCardTurned]);
+  const dealerHandElements = useMemo(() => dealerHand.map((card, i, arr) => <Card value={card.value} suit={card.suit} key={uniqid()} cardOwner={Persons.Dealer} shouldAnimate={(arr.length === 2 && phase === Phase.PlayerPhase) || (arr.length - 1 === i && arr.length !== 2)} isTurnedOff={i === 0 && isCardTurned} />), [dealerHand, isCardTurned]);
 
   if (!playerHand.length) {
     return null;

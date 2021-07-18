@@ -9,6 +9,7 @@ import {
   showAddBalance,
 } from '../../redux/blackJackSlice';
 import {BetsChip} from '../Bets/BetsChip/BetsChip';
+import {useTranslation} from '../../hooks/useTranslation';
 
 export function AddBalance() {
   const isVisible = useSelector(selectAddBalanceVisibility);
@@ -16,6 +17,7 @@ export function AddBalance() {
   const dispatch = useDispatch();
   const balance = useSelector(selectBalance);
   const [balanceToAdd, setAddedBalance] = useState(0);
+  const language = useTranslation();
 
   useEffect(() => {
     if (balance < 60 && phase === Phase.BetPhase) {
@@ -34,19 +36,19 @@ export function AddBalance() {
 
   return (
     <div className={styles.addBalance}>
-      <p className={styles.addBalanceTitle}>Пополните ваш баланс</p>
+      <p className={styles.addBalanceTitle}>{language.addBalance.title}</p>
       <div className={styles.offerContainer}>
         <div className={styles.offer} onClick={() => setAddedBalance(1500)}>
           <BetsChip mainColor="#ba7804" secondaryColor="#d8a03d" number={1500} numberColor="#e2c486" />
-          <p className={styles.paragraph}>Небольшое пополнеие позволит вам играть дальше</p>
+          <p className={styles.paragraph}>{language.addBalance.firstParagraph}</p>
         </div>
         <div className={styles.offer} onClick={() => setAddedBalance(6000)}>
           <BetsChip mainColor="#ba6357" secondaryColor="#c98579" number={6000} numberColor="#ebb5ac" />
-          <p className={styles.paragraph}>Самое то чтобы сорвать куш</p>
+          <p className={styles.paragraph}>{language.addBalance.secondParagraph}</p>
         </div>
         <div className={styles.offer} onClick={() => setAddedBalance(30000)}>
           <BetsChip mainColor="#004c7b" secondaryColor="#277da5" number={30000} numberColor="#c4e1ef" />
-          <p className={styles.paragraph}>Не оставь диллеру шансов</p>
+          <p className={styles.paragraph}>{language.addBalance.thirdParagraph}</p>
         </div>
       </div>
       <div className={styles.buttonContainer} onClick={addBalanceHandler}>
