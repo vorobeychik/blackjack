@@ -22,14 +22,14 @@ export function Bets() {
   }, [balance]);
 
   const bets = useMemo(() => betsAssets.map((betAsset) => (
-    <button type="button" onClick={() => betHandler(betAsset.number)} className={styles[`chip${betAsset.number}`]} key={uniqid()}>
+    <div onClick={() => betHandler(betAsset.number)} className={styles[`chip${betAsset.number}`]} key={uniqid()}>
       <BetsChip
         mainColor={betAsset.mainColor}
         secondaryColor={betAsset.secondaryColor}
         number={betAsset.number}
         numberColor={betAsset.numberColor}
       />
-    </button>
+    </div>
   )), [betHandler]);
 
   if (phase !== Phase.BetPhase) {

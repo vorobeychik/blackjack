@@ -9,7 +9,7 @@ export function InfoBet() {
   const translation = useTranslation();
 
   return (
-    <div className={styles.betContainer}>
+    <div className={styles.betContainer} data-testid="infoBet">
       <p className={styles.betTitle}>{translation.bet}</p>
       <p className={styles.betParagraph}>{bet}</p>
     </div>

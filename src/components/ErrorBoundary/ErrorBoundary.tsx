@@ -15,10 +15,6 @@ export class ErrorBoundary extends React.Component {
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error(error, errorInfo);
-  }
-
   render() {
     // @ts-ignore
     const {hasError} = this.state;

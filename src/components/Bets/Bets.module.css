@@ -1,11 +1,11 @@
 .bets_container{
     position: absolute;
     top: 40%;
-    left: 27.5%;
+    left: 30%;
     display: flex;
     justify-content: space-between;
     height: 30%;
-    width: 45%;
+    width: 40%;
     animation: betsAppear ease-out 2s ;
 }
 

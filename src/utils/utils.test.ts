@@ -1,5 +1,4 @@
 import {getWeightOfCard, getRandomNumber, createDeck} from './utils';
-import {CardValues} from '../types/types';
 
 const deck = [{weight: 2, suit: 'Spades', value: '2'},
   {weight: 3, suit: 'Spades', value: '3'},
