@@ -28,12 +28,17 @@ export function Bets() {
         secondaryColor={betAsset.secondaryColor}
         number={betAsset.number}
         numberColor={betAsset.numberColor}
+        fontSize={betAsset.fontSize}
+        x={betAsset.x}
+        y={betAsset.y}
       />
     </div>
   )), [betHandler]);
 
   if (phase !== Phase.BetPhase) {
-    return null;
+    return (
+      null
+    );
   }
 
   return (

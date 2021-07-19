@@ -1,5 +1,5 @@
 import React from 'react';
-import { BetsChipNumber } from './BetsChipNumber/BetsChipNumber';
+
 import { BetsValues } from '../../../types/types';
 
 type BetsChipProps = {
@@ -7,12 +7,16 @@ type BetsChipProps = {
   secondaryColor: string,
   number: BetsValues,
   numberColor: string,
+  fontSize: number,
+  x: string,
+  y: string,
 
 };
 
 export function BetsChip({
-  mainColor, secondaryColor, number, numberColor,
+  mainColor, secondaryColor, number, numberColor, fontSize, x, y,
 }: BetsChipProps) {
+  const chipNumber = number === 30000 ? '30k' : number;
   return (
     <svg width="100%" viewBox="0 0 82 83" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="40" cy="42" r="40" fill="white" />
@@ -24,9 +28,7 @@ export function BetsChip({
       <line x1="42" y1="2" x2="42" y2="82" stroke={secondaryColor} strokeWidth="4" />
       <circle cx="40.5" cy="42.5" r="32.5" fill={secondaryColor} />
       <circle cx="40.5" cy="42.5" r="27.5" fill={mainColor} />
-
-      <BetsChipNumber numberColor={numberColor} number={number} />
-
+      <text x={x} y={y} fill={numberColor} fontSize={fontSize} fontWeight="bold">{chipNumber}</text>
     </svg>
   );
 }

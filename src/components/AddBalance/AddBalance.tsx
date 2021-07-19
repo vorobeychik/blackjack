@@ -39,15 +39,15 @@ export function AddBalance() {
       <p className={styles.addBalanceTitle}>{language.addBalance.title}</p>
       <div className={styles.offerContainer}>
         <div className={styles.offer} onClick={() => setAddedBalance(1500)}>
-          <BetsChip mainColor="#ba7804" secondaryColor="#d8a03d" number={1500} numberColor="#e2c486" />
+          <BetsChip mainColor="#ba7804" secondaryColor="#d8a03d" number={1500} numberColor="#e2c486" fontSize={23} x="17%" y="59%" />
           <p className={styles.paragraph}>{language.addBalance.firstParagraph}</p>
         </div>
         <div className={styles.offer} onClick={() => setAddedBalance(6000)}>
-          <BetsChip mainColor="#ba6357" secondaryColor="#c98579" number={6000} numberColor="#ebb5ac" />
+          <BetsChip mainColor="#ba6357" secondaryColor="#c98579" number={6000} numberColor="#ebb5ac" fontSize={23} x="17%" y="59%" />
           <p className={styles.paragraph}>{language.addBalance.secondParagraph}</p>
         </div>
         <div className={styles.offer} onClick={() => setAddedBalance(30000)}>
-          <BetsChip mainColor="#004c7b" secondaryColor="#277da5" number={30000} numberColor="#c4e1ef" />
+          <BetsChip mainColor="#004c7b" secondaryColor="#277da5" number={30000} numberColor="#c4e1ef" fontSize={30} x="18%" y="63%" />
           <p className={styles.paragraph}>{language.addBalance.thirdParagraph}</p>
         </div>
       </div>

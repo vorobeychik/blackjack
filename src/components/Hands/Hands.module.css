@@ -58,3 +58,9 @@
         width: 100%;
     }
 }
+
+@media (orientation:  landscape) {
+    .hands{
+        top:5px;
+    }
+}
