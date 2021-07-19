@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Settings.module.css';
-import {SettingsLanguage} from './SettingsLanguage/SettingsLanguage';
+import { SettingsLanguage } from './SettingsLanguage/SettingsLanguage';
 
 export function Settings() {
   return (

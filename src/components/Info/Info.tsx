@@ -1,6 +1,6 @@
 import React from 'react';
-import {InfoBalance} from './InfoBalance/InfoBalance';
-import {InfoBet} from './InfoBet/InfoBet';
+import { InfoBalance } from './InfoBalance/InfoBalance';
+import { InfoBet } from './InfoBet/InfoBet';
 import styles from './Info.module.css';
 
 export function Info() {

@@ -1,23 +1,25 @@
 import React from 'react';
-import {CardSuits, CardValues} from '../../types/types';
-import {CardValue} from './CardValue/CardValue';
-import {CardSuit} from './CardSuit/CardSuit';
+import { CardSuits, CardValues } from '../../types/types';
+import { CardValue } from './CardValue/CardValue';
+import { CardSuit } from './CardSuit/CardSuit';
 import styles from './Card.module.css';
-import {Persons} from '../../redux/blackJackSlice';
+import { Persons } from '../../redux/blackJackSlice';
 
 type CardProps = {
-  value:CardValues,
-  suit:CardSuits,
-  cardOwner:Persons,
-  shouldAnimate:boolean,
-  isTurnedOff:boolean,
+  value: CardValues,
+  suit: CardSuits,
+  cardOwner: Persons,
+  shouldAnimate: boolean,
+  isTurnedOff: boolean,
 };
 
 export function Card({
   value, suit, cardOwner, shouldAnimate, isTurnedOff,
-}:CardProps) {
+}: CardProps) {
   let classes = styles.card;
-  const animation = cardOwner === Persons.Player ? styles.animatePlayerCard : styles.animateDealerCard;
+  const animation = cardOwner === Persons.Player
+    ? styles.animatePlayerCard
+    : styles.animateDealerCard;
   if (shouldAnimate) {
     classes = `${classes} ${animation}`;
   }

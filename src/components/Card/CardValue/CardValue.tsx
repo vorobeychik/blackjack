@@ -1,12 +1,12 @@
 import React from 'react';
-import {CardSuits, CardValues} from '../../../types/types';
+import { CardSuits, CardValues } from '../../../types/types';
 
 type CardValueProps = {
-  suit:CardSuits,
-  value:CardValues,
+  suit: CardSuits,
+  value: CardValues,
 };
 
-export function CardValue({suit, value}:CardValueProps) {
+export function CardValue({ suit, value }: CardValueProps) {
   const color = ['Hearts', 'Diamonds'].includes(suit) ? '#b02230' : '#020202';
 
   switch (value) {

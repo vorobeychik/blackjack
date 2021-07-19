@@ -17,9 +17,9 @@ export class ErrorBoundary extends React.Component {
 
   render() {
     // @ts-ignore
-    const {hasError} = this.state;
+    const { hasError } = this.state;
     // eslint-disable-next-line react/prop-types
-    const {children} = this.props;
+    const { children } = this.props;
     if (hasError) {
       return <h1 className={styles.errorMsg}>Something went wrong try later</h1>;
     }

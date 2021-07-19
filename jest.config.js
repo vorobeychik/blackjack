@@ -1,12 +1,13 @@
 module.exports = {
     preset: 'ts-jest',
-    testEnvironment: 'node',
+    testEnvironment: 'jsdom',
     transform: {
-        "^.+\\.tsx?$": "ts-jest"
+        '.(css|less)$': './style-mock.js'
     },
     globals: {
         'ts-jest': {
             tsconfig: 'tsconfig.test.json',
         },
     },
+    setupFilesAfterEnv:["./jest.setup.ts"]
 };

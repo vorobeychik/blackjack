@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
-import {useSelector} from 'react-redux';
-import {Card} from '../Card/Card';
-import {Deck} from '../Deck/Deck';
+import { useSelector } from 'react-redux';
+import { Card } from '../Card/Card';
+import { Deck } from '../Deck/Deck';
 import {
   Persons, Phase,
   selectDealerHand,
@@ -12,7 +12,7 @@ import {
   selectPlayerHandWeight,
 } from '../../redux/blackJackSlice';
 import styles from './Hands.module.css';
-import {HandsWeight} from './HandsWeight/HandsWeight';
+import { HandsWeight } from './HandsWeight/HandsWeight';
 
 const uniqid = require('uniqid');
 

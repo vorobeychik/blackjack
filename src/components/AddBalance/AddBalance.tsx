@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect, useState} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './AddBalance.module.css';
 import {
   addToBalance,
@@ -8,8 +8,8 @@ import {
   selectBalance, selectPhase,
   showAddBalance,
 } from '../../redux/blackJackSlice';
-import {BetsChip} from '../Bets/BetsChip/BetsChip';
-import {useTranslation} from '../../hooks/useTranslation';
+import { BetsChip } from '../Bets/BetsChip/BetsChip';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export function AddBalance() {
   const isVisible = useSelector(selectAddBalanceVisibility);

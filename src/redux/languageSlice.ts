@@ -1,5 +1,5 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {RootState} from './store';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './store';
 
 export enum Languages {
   Ru = 'Ru',
@@ -10,7 +10,7 @@ const languageSlice = createSlice({
   name: 'languageSlice',
   initialState: Languages.EN,
   reducers: {
-    changeLanguage: (state, action:PayloadAction<Languages>) => {
+    changeLanguage: (state, action: PayloadAction<Languages>) => {
       state = action.payload;
 
       return state;
@@ -20,6 +20,6 @@ const languageSlice = createSlice({
 
 export default languageSlice.reducer;
 
-export const {changeLanguage} = languageSlice.actions;
+export const { changeLanguage } = languageSlice.actions;
 
-export const selectLanguage = (state:RootState) => state.language;
+export const selectLanguage = (state: RootState) => state.language;

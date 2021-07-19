@@ -1,14 +1,14 @@
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Message.module.css';
 import {
   hideBets, hideMessage, selectMessage, showAddBalance,
 } from '../../redux/blackJackSlice';
-import {useTranslation} from '../../hooks/useTranslation';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export function Message() {
   const dispatch = useDispatch();
-  const {isVisible} = useSelector(selectMessage);
+  const isVisible = useSelector(selectMessage);
   const animationEndHandler = () => { dispatch(hideMessage()); };
   const translation = useTranslation();
   const clickHandler = () => {

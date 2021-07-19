@@ -2,11 +2,11 @@ import { CardValues } from '../types/types';
 import { Card } from '../redux/blackJackSlice';
 import { suits, values } from '../data/cards';
 
-export function getRandomNumber(num:number):number {
+export function getRandomNumber(num: number): number {
   return Math.floor(Math.random() * num);
 }
 
-export function getWeightOfCard(cardValue:CardValues):number {
+export function getWeightOfCard(cardValue: CardValues): number {
   if (['K', 'Q', 'J'].includes(cardValue)) {
     return 10;
   } if (cardValue === 'A') {
@@ -15,18 +15,18 @@ export function getWeightOfCard(cardValue:CardValues):number {
   return Number(cardValue);
 }
 
-export function createDeck(amountOfDecks:number):Card[] {
-  const deck:Card[] = [];
+export function createDeck(amountOfDecks: number): Card[] {
+  const deck: Card[] = [];
   for (let i = 0; i < amountOfDecks; i += 1) {
     suits.forEach((suit) => {
       values.forEach((value) => {
         const weight = getWeightOfCard(value);
 
-        const card:Card = {
+        const card: Card = {
           weight,
           suit,
           value,
-          ...(value === 'A' && {extraWeight: 1}),
+          ...(value === 'A' && { extraWeight: 1 }),
         };
 
         deck.push(card);
@@ -46,6 +46,6 @@ export function getBalance() {
 
   return Number(balance);
 }
-export function setBalance(newBalance:number) {
+export function setBalance(newBalance: number) {
   localStorage.setItem('balance', `${newBalance}`);
 }

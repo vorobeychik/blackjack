@@ -1,6 +1,6 @@
-import React, {useCallback} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {changeLanguage, Languages, selectLanguage} from '../../../redux/languageSlice';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeLanguage, Languages, selectLanguage } from '../../../redux/languageSlice';
 import styles from './SettingsLanguage.module.css';
 
 export function SettingsLanguage() {

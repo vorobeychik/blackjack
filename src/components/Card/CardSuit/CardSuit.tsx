@@ -1,11 +1,11 @@
 import React from 'react';
-import {CardSuits} from '../../../types/types';
+import { CardSuits } from '../../../types/types';
 
 type CardSuitProps = {
-  suit:CardSuits,
+  suit: CardSuits,
 };
 
-export function CardSuit({suit}:CardSuitProps) {
+export function CardSuit({ suit }: CardSuitProps) {
   switch (suit) {
     case 'Clubs':
       return (

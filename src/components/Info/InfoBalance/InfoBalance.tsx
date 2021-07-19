@@ -1,8 +1,8 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
-import {selectBalance} from '../../../redux/blackJackSlice';
+import { useSelector } from 'react-redux';
+import { selectBalance } from '../../../redux/blackJackSlice';
 import styles from './InfoBalance.module.css';
-import {useTranslation} from '../../../hooks/useTranslation';
+import { useTranslation } from '../../../hooks/useTranslation';
 
 export function InfoBalance() {
   const balance = useSelector(selectBalance);

@@ -1,9 +1,9 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {RootState} from './store';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from './store';
 import {
   createDeck, getBalance, getRandomNumber, getWeightOfCard, setBalance,
 } from '../utils/utils';
-import {CardSuits, CardValues} from '../types/types';
+import { CardSuits, CardValues } from '../types/types';
 
 export enum Persons {
   Player = 'Player',
@@ -17,7 +17,7 @@ export enum Phase{
   RoundResultPhase = 'RoundResultPhase',
 }
 
-const initialState:StateType = {
+export const initialState: StateType = {
   deck: [],
   isDealerTurn: false,
   isCardTurned: true,
@@ -40,64 +40,47 @@ const initialState:StateType = {
     hand: [],
   },
   balance: getBalance(),
-  message: {
-    isVisible: false,
-  },
+  isMessageVisible: false,
   bet: 0,
-  bets: {
-    isVisible: true,
+  isBetsVisible: true,
+  isGameControlsVisible: false,
+  isAddBalanceVisible: false,
 
-  },
-  gameControls: {
-    isVisible: false,
-  },
-  addBalance: {
-    isVisible: false,
-  },
   phase: Phase.BetPhase,
 };
 
 type StateType = {
-  deck:Card[],
-  dealer:Player,
-  isCardTurned:boolean,
-  player:Player,
-  balance:number,
+  deck: Card[],
+  dealer: Player,
+  isCardTurned: boolean,
+  player: Player,
+  balance: number,
   phase: Phase,
-  isDealerTurn:boolean,
-  result:{
-    playerWillWin:number,
-    playerWillLose:number,
+  isDealerTurn: boolean,
+  result: {
+    playerWillWin: number,
+    playerWillLose: number,
   },
-  message:{
-    isVisible:boolean,
-  },
-  bet:number,
-  bets:{
-    isVisible:boolean,
-
-  },
-  gameControls:{
-    isVisible:boolean,
-  },
-  addBalance:{
-    isVisible:boolean,
-  },
+  isMessageVisible: boolean,
+  bet: number,
+  isBetsVisible: boolean,
+  isGameControlsVisible: boolean,
+  isAddBalanceVisible: boolean,
 };
 
 export type Card = {
-  suit:CardSuits,
-  value:CardValues,
-  weight:number,
-  extraWeight?:number,
+  suit: CardSuits,
+  value: CardValues,
+  weight: number,
+  extraWeight?: number,
 };
 
 type Player = {
   weights: {
-    weight:number,
-    extraWeight:number
+    weight: number,
+    extraWeight: number
   },
-  hand:Card[],
+  hand: Card[],
 };
 
 const blackJackSlice = createSlice({
@@ -109,10 +92,10 @@ const blackJackSlice = createSlice({
 
       return state;
     },
-    getCards: (state, action:PayloadAction<{amount:number, player:Persons}>) => {
-      const {deck} = state;
-      const hand:Card[] = [];
-      const {amount, player} = action.payload;
+    getCards: (state, action: PayloadAction<{amount: number, player: Persons}>) => {
+      const { deck } = state;
+      const hand: Card[] = [];
+      const { amount, player } = action.payload;
 
       for (let index = 0; index < amount; index += 1) {
         const randomNumber = getRandomNumber(deck.length);
@@ -130,10 +113,10 @@ const blackJackSlice = createSlice({
 
       return state;
     },
-    countHandWeight(state, action:PayloadAction<string>) {
+    countHandWeight(state, action: PayloadAction<string>) {
       const player = action.payload;
       let weight = 0;
-      let hand:Card[];
+      let hand: Card[];
 
       if (player === Persons.Player) {
         hand = state.player.hand;
@@ -167,29 +150,29 @@ const blackJackSlice = createSlice({
       state.dealer.weights.weight = state.dealer.weights.extraWeight;
       state.dealer.weights.extraWeight = 0;
     },
-    addToBalance: (state, action:PayloadAction<number>) => {
+    addToBalance: (state, action: PayloadAction<number>) => {
       state.balance += action.payload;
       setBalance(state.balance);
       return state;
     },
-    subtractFromBalance: (state, action:PayloadAction<number>) => {
+    subtractFromBalance: (state, action: PayloadAction<number>) => {
       state.balance -= action.payload;
       return state;
     },
     showBets: (state) => {
-      state.bets.isVisible = true;
+      state.isBetsVisible = true;
     },
     hideBets: (state) => {
-      state.bets.isVisible = false;
+      state.isBetsVisible = false;
     },
-    makeBet: (state, action:PayloadAction<number>) => {
+    makeBet: (state, action: PayloadAction<number>) => {
       state.balance -= action.payload;
       state.bet = action.payload;
       state.result.playerWillLose = action.payload;
 
       setBalance(state.balance);
     },
-    playerWinBet: (state, action:PayloadAction<number>) => {
+    playerWinBet: (state, action: PayloadAction<number>) => {
       const coefficient = action.payload;
       const winAmount = state.bet * coefficient;
 
@@ -207,7 +190,7 @@ const blackJackSlice = createSlice({
       state.isCardTurned = true;
 
       state.bet = 0;
-      state.bets.isVisible = true;
+      state.isBetsVisible = true;
 
       state.player.hand = [];
       state.player.weights.weight = 0;
@@ -220,32 +203,29 @@ const blackJackSlice = createSlice({
       state.result.playerWillLose = 0;
       state.result.playerWillWin = 0;
     },
-    changePhase: (state, action:PayloadAction<Phase>) => {
+    changePhase: (state, action: PayloadAction<Phase>) => {
       state.phase = action.payload;
     },
-    startDealerTurn: (state) => {
-      state.isDealerTurn = true;
-    },
     hideGameControls: (state) => {
-      state.gameControls.isVisible = false;
+      state.isGameControlsVisible = false;
     },
     showGameControls: (state) => {
-      state.gameControls.isVisible = true;
+      state.isGameControlsVisible= true;
     },
     showAddBalance: (state) => {
-      state.addBalance.isVisible = true;
+      state.isAddBalanceVisible = true;
     },
-    turnCard: (state, action:PayloadAction<boolean>) => {
+    turnCard: (state, action: PayloadAction<boolean>) => {
       state.isCardTurned = action.payload;
     },
     showMessage: (state) => {
-      state.message.isVisible = true;
+      state.isMessageVisible = true;
     },
     hideMessage: (state) => {
-      state.message.isVisible = false;
+      state.isMessageVisible = false;
     },
     hideAddBalance: (state) => {
-      state.addBalance.isVisible = false;
+      state.isAddBalanceVisible = false;
     },
 
   },
@@ -257,29 +237,29 @@ export default blackJackSlice.reducer;
 export const {
   createNewDeck, getCards, countHandWeight, addToBalance, subtractFromBalance,
   showBets, hideBets, makeBet,
-  playerWinBet, hideGameControls, showGameControls, roundEnd, startDealerTurn,
+  playerWinBet, hideGameControls, showGameControls, roundEnd,
   hideAddBalance, showAddBalance,
   changePhase, showMessage, hideMessage, setPlayerExtraWeightToWeight,
   setDealerExtraWeightToWeight, turnCard,
 } = blackJackSlice.actions;
 
-export const selectBalance = (state:RootState) => state.blackJack.balance;
-export const selectBetsVisibility = (state:RootState) => state.blackJack.bets.isVisible;
-export const selectPlayerHandWeight = (state:RootState) => state.blackJack.player.weights.weight;
-export const selectIsDealerTurn = (state:RootState) => state.blackJack.isDealerTurn;
-export const selectDealerHandWeight = (state:RootState) => state.blackJack.dealer.weights.weight;
-export const selectGameControlsVisibility = (state:RootState) => state.blackJack.gameControls.isVisible;
-export const selectDealerHand = (state:RootState) => state.blackJack.dealer.hand;
-export const selectPlayerHand = (state:RootState) => state.blackJack.player.hand;
-export const selectDealerHandExtraWeight = (state:RootState):number => state.blackJack.dealer.weights.extraWeight;
-export const selectPlayerHandExtraWeight = (state:RootState):number => state.blackJack.player.weights.extraWeight;
-export const selectDealerHandWeights = (state:RootState) => state.blackJack.dealer.weights;
-export const selectPlayerHandWeights = (state:RootState) => state.blackJack.player.weights;
-export const selectAddBalanceVisibility = (state:RootState) => state.blackJack.addBalance.isVisible;
-export const selectPhase = (state:RootState) => state.blackJack.phase;
-export const selectMessage = (state:RootState) => state.blackJack.message;
-export const selectDealerCard = (state:RootState, cardIndex:number) => state.blackJack.dealer.hand[cardIndex];
-export const selectIsCardTurned = (state:RootState) => state.blackJack.isCardTurned;
-export const selectDeck = (state:RootState) => state.blackJack.deck;
-export const selectBet = (state:RootState) => state.blackJack.bet;
-export const selectResult = (state:RootState) => state.blackJack.result;
+export const selectBalance = (state: RootState) => state.blackJack.balance;
+export const selectBetsVisibility = (state: RootState) => state.blackJack.isBetsVisible;
+export const selectPlayerHandWeight = (state: RootState) => state.blackJack.player.weights.weight;
+export const selectIsDealerTurn = (state: RootState) => state.blackJack.isDealerTurn;
+export const selectDealerHandWeight = (state: RootState) => state.blackJack.dealer.weights.weight;
+export const selectGameControlsVisibility = (state: RootState) => state.blackJack.isGameControlsVisible;
+export const selectDealerHand = (state: RootState) => state.blackJack.dealer.hand;
+export const selectPlayerHand = (state: RootState) => state.blackJack.player.hand;
+export const selectDealerHandExtraWeight = (state: RootState): number => state.blackJack.dealer.weights.extraWeight;
+export const selectPlayerHandExtraWeight = (state: RootState): number => state.blackJack.player.weights.extraWeight;
+export const selectDealerHandWeights = (state: RootState) => state.blackJack.dealer.weights;
+export const selectPlayerHandWeights = (state: RootState) => state.blackJack.player.weights;
+export const selectAddBalanceVisibility = (state: RootState) => state.blackJack.isAddBalanceVisible;
+export const selectPhase = (state: RootState) => state.blackJack.phase;
+export const selectMessage = (state: RootState) => state.blackJack.isMessageVisible;
+export const selectDealerCard = (state: RootState, cardIndex: number) => state.blackJack.dealer.hand[cardIndex];
+export const selectIsCardTurned = (state: RootState) => state.blackJack.isCardTurned;
+export const selectDeck = (state: RootState) => state.blackJack.deck;
+export const selectBet = (state: RootState) => state.blackJack.bet;
+export const selectResult = (state: RootState) => state.blackJack.result;

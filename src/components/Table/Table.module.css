@@ -1,5 +1,7 @@
-.tableText{
-
+.table{
+    width: 100%;
+    height: 100%;
+    background-color: #216B63;
 }
 
 @media (max-width: 500px) {

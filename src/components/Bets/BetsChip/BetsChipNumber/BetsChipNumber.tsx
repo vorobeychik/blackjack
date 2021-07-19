@@ -1,12 +1,12 @@
 import React from 'react';
-import {BetsValues} from '../../../../types/types';
+import { BetsValues } from '../../../../types/types';
 
 type BetsChipNumberProps = {
-  numberColor:string,
-  number:BetsValues,
+  numberColor: string,
+  number: BetsValues,
 };
 
-export function BetsChipNumber({numberColor, number}:BetsChipNumberProps) {
+export function BetsChipNumber({ numberColor, number }: BetsChipNumberProps) {
   switch (number) {
     case 60:
       return (

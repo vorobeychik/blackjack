@@ -1,21 +1,21 @@
-import React, {useCallback, useMemo} from 'react';
-import {useSelector} from 'react-redux';
+import React, { useCallback, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import {
   selectPhase, selectBalance,
   Phase,
 } from '../../redux/blackJackSlice';
 import styles from './Bets.module.css';
 
-import {useBlackJack} from '../../hooks/useBlackJack';
-import {BetsChip} from './BetsChip/BetsChip';
-import {betsAssets} from '../../data/betsAssets';
+import { useBlackJack } from '../../hooks/useBlackJack';
+import { BetsChip } from './BetsChip/BetsChip';
+import { betsAssets } from '../../data/betsAssets';
 
 const uniqid = require('uniqid');
 
 export function Bets() {
   const phase = useSelector(selectPhase);
   const balance = useSelector(selectBalance);
-  const {startNewRound} = useBlackJack();
+  const { startNewRound } = useBlackJack();
 
   const betHandler = useCallback((bet) => {
     startNewRound(bet, balance);
@@ -33,9 +33,7 @@ export function Bets() {
   )), [betHandler]);
 
   if (phase !== Phase.BetPhase) {
-    return (
-      null
-    );
+    return null;
   }
 
   return (

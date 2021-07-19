@@ -1,18 +1,18 @@
 import React from 'react';
-import {BetsChipNumber} from './BetsChipNumber/BetsChipNumber';
-import {BetsValues} from '../../../types/types';
+import { BetsChipNumber } from './BetsChipNumber/BetsChipNumber';
+import { BetsValues } from '../../../types/types';
 
 type BetsChipProps = {
-  mainColor:string,
-  secondaryColor:string,
-  number:BetsValues,
-  numberColor:string,
+  mainColor: string,
+  secondaryColor: string,
+  number: BetsValues,
+  numberColor: string,
 
 };
 
 export function BetsChip({
   mainColor, secondaryColor, number, numberColor,
-}:BetsChipProps) {
+}: BetsChipProps) {
   return (
     <svg width="100%" viewBox="0 0 82 83" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="40" cy="42" r="40" fill="white" />

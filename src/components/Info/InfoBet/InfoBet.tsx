@@ -1,8 +1,8 @@
 import React from 'react';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import styles from './InfoBet.module.css';
-import {selectBet} from '../../../redux/blackJackSlice';
-import {useTranslation} from '../../../hooks/useTranslation';
+import { selectBet } from '../../../redux/blackJackSlice';
+import { useTranslation } from '../../../hooks/useTranslation';
 
 export function InfoBet() {
   const bet = useSelector(selectBet);

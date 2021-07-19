@@ -1,13 +1,13 @@
-import {BetsValues} from '../types/types';
+import { BetsValues } from '../types/types';
 
 export type BetAsset = {
-  mainColor:string,
-  secondaryColor:string,
-  number:BetsValues,
-  numberColor:string,
+  mainColor: string,
+  secondaryColor: string,
+  number: BetsValues,
+  numberColor: string,
 };
 
-export const betsAssets:BetAsset[] = [
+export const betsAssets: BetAsset[] = [
   {
     mainColor: '#691F00',
     secondaryColor: '#875036',

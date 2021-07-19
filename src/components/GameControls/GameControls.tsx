@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect} from 'react';
-import {useSelector} from 'react-redux';
+import React, { useCallback, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import styles from './GameControls.module.css';
 import {
   Phase, selectDealerHandExtraWeight,
@@ -8,8 +8,8 @@ import {
   selectPhase, selectPlayerHandExtraWeight,
   selectPlayerHandWeight,
 } from '../../redux/blackJackSlice';
-import {useBlackJack} from '../../hooks/useBlackJack';
-import {useTranslation} from '../../hooks/useTranslation';
+import { useBlackJack } from '../../hooks/useBlackJack';
+import { useTranslation } from '../../hooks/useTranslation';
 
 export function GameControls() {
   const isVisible = useSelector(selectGameControlsVisibility);
@@ -36,9 +36,7 @@ export function GameControls() {
   }, [playerHandWeight, playerHandExtraWeight]);
 
   if (phase !== Phase.PlayerPhase || !isVisible) {
-    return (
-      null
-    );
+    return null;
   }
 
   return (

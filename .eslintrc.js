@@ -8,10 +8,12 @@ module.exports = {
         "import/prefer-default-export":"off",
         "no-param-reassign":"off",
         "import/no-cycle":"off",
-        "@typescript-eslint/object-curly-spacing":"off",
+        "object-curly-spacing": ["error", "always"],
+        '@typescript-eslint/object-curly-spacing':"off",
+        "@typescript-eslint/type-annotation-spacing": ["error"],
         "@typescript-eslint/space-infix-ops":"off",
-        'max-len':'off',
         'jsx-a11y/click-events-have-key-events':'off',
         'jsx-a11y/no-static-element-interactions':'off',
+        'max-len':'off'
     },
 };

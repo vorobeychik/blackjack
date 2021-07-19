@@ -1,4 +1,4 @@
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {
   changePhase,
   countHandWeight,
@@ -21,7 +21,7 @@ import {
 export function useBlackJack() {
   const dispatch = useDispatch();
 
-  function roundResult(playerHandWeight:number, dealerHandWeight:number) {
+  function roundResult(playerHandWeight: number, dealerHandWeight: number) {
     if (dealerHandWeight > aim) {
       dispatch(playerWinBet(winCoefficient));
     } else if (playerHandWeight === dealerHandWeight) {
@@ -30,17 +30,17 @@ export function useBlackJack() {
       dispatch(playerWinBet(winCoefficient));
     }
 
-    setTimeout(() => dispatch(changePhase(Phase.RoundResultPhase)), 5000);
+    setTimeout(() => dispatch(changePhase(Phase.RoundResultPhase)), 3500);
   }
 
-  function startNewRound(bet:number, balance:number) {
+  function startNewRound(bet: number, balance: number) {
     if (balance < bet) {
       dispatch(showMessage());
     } else {
       dispatch(makeBet(bet));
       dispatch(changePhase(Phase.PlayerPhase));
-      dispatch(getCards({player: Persons.Dealer, amount: 2}));
-      dispatch(getCards({player: Persons.Player, amount: 2}));
+      dispatch(getCards({ player: Persons.Dealer, amount: 2 }));
+      dispatch(getCards({ player: Persons.Player, amount: 2 }));
       dispatch(countHandWeight(Persons.Player));
       dispatch(countHandWeight(Persons.Dealer));
       dispatch(showGameControls());
@@ -48,12 +48,12 @@ export function useBlackJack() {
   }
 
   function playerTakeCard() {
-    dispatch(getCards({player: Persons.Player, amount: 1}));
+    dispatch(getCards({ player: Persons.Player, amount: 1 }));
     dispatch(countHandWeight(Persons.Player));
   }
 
   function dealerTakeCard() {
-    dispatch(getCards({player: Persons.Dealer, amount: 1}));
+    dispatch(getCards({ player: Persons.Dealer, amount: 1 }));
     dispatch(countHandWeight(Persons.Dealer));
   }
 
@@ -62,7 +62,7 @@ export function useBlackJack() {
     dispatch(turnCard(false));
   }
 
-  function checkDealerHands(playerHandWeight:number, dealerHandWeight:number, phase:Phase, dealerHandExtraWeight:number) {
+  function checkDealerHands(playerHandWeight: number, dealerHandWeight: number, phase: Phase, dealerHandExtraWeight: number) {
     if (phase === Phase.DealerPhase) {
       if (dealerHandWeight > aim && dealerHandExtraWeight) {
         dispatch(setDealerExtraWeightToWeight());
@@ -74,7 +74,7 @@ export function useBlackJack() {
     }
   }
 
-  function checkPlayerHand(playerHandWeight:number, playerHandExtraWeight:number) {
+  function checkPlayerHand(playerHandWeight: number, playerHandExtraWeight: number) {
     if (playerHandWeight > aim && playerHandExtraWeight) {
       dispatch(setPlayerExtraWeightToWeight());
     } else if (playerHandWeight > aim) {
