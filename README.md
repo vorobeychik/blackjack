@@ -19,7 +19,7 @@ Standard American blackjack where you can win, lose and just have fun
 <b>Eslint </b>
 <code>npm run lint </code>
 
-##Technologies
+## Technologies
 
 <ul>
   <li>React.js</li>
